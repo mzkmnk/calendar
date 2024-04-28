@@ -1,0 +1,26 @@
+{
+  "name": "mzkmnk-calendar",
+  "version": "0.2.1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mzkmnk/calendar/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mzkmnk/calendar.git"
+  },
+  "homepage": "https://github.com/mzkmnk/calendar/issues",
+  "keywords": [],
+  "peerDependencies": {
+    "@angular/common": "^17.0.2",
+    "@angular/core": "^17.0.2",
+    "@ionic/angular": "^8.0.0",
+    "date-fns": "^3.6.0"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@ionic/angular": "^7.7.3"
+  },
+  "author": "mzkmnk",
+  "description": ""
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import {
   IonContent,
@@ -28,7 +28,8 @@ import {
   format,
   getDay,
 } from 'date-fns';
-import { sampleEvents } from './sumpleData';
+
+// import { sampleEvents } from '../../../../data/sumpleData';
 
 interface CalendarEvent {
   id: number;
@@ -72,7 +73,44 @@ interface Day {
   ],
 })
 export class MzkmnkCalendarComponent implements OnInit {
-  @Input() data: CalendarEvent[] = sampleEvents;
+  @Input() data: CalendarEvent[] = [
+    {
+      id: 1,
+      title: '遊びに行く',
+      firstDate: new Date('2024-04-01T10:15:00'),
+      lastDate: new Date('2024-04-01T11:00:00'),
+      allDay: false,
+      location: '東京都',
+      details: '浅草とかにいく予定',
+    },
+    {
+      id: 2,
+      title: '映画鑑賞',
+      firstDate: new Date('2024-04-05T19:00:00'),
+      lastDate: new Date('2024-04-05T21:30:00'),
+      allDay: false,
+      location: '新宿',
+      details: '新作映画を友人と観に行く',
+    },
+    {
+      id: 3,
+      title: 'ランニング',
+      firstDate: new Date('2024-04-07T06:00:00'),
+      lastDate: new Date('2024-04-07T07:30:00'),
+      allDay: false,
+      location: '代々木公園',
+      details: '朝練を行う',
+    },
+    {
+      id: 4,
+      title: '昼食会',
+      firstDate: new Date('2024-04-10T12:00:00'),
+      lastDate: new Date('2024-04-10T13:30:00'),
+      allDay: false,
+      location: '六本木',
+      details: '同僚と昼食をとる',
+    },
+  ];
 
   /**
    * 曜日の配列
