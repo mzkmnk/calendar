@@ -73,14 +73,11 @@ Thumbs.db
 # Folders
 .vscode
 .ios
-/src/app
+/src/app/home
+
 /src/assets
 /src/environments
 .browserslistrc
 .editorconfig
 .eslintrc.json
-karma.conf.js
 package-lock.json
-tsconfig.app.json
-tsconfig.json
-tsconfig.spec.json
