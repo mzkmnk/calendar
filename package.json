@@ -63,6 +63,6 @@
     "typescript": "~5.2.2"
   },
   "description": "An Ionic project",
-  "main": "./s",
+  "main": "main.ts",
   "license": "ISC"
 }
