@@ -29,8 +29,6 @@ import {
   getDay,
 } from 'date-fns';
 
-// import { sampleEvents } from '../../../../data/sumpleData';
-
 interface CalendarEvent {
   id: number;
   title: string;
@@ -95,8 +93,8 @@ export class MzkmnkCalendarComponent implements OnInit {
     {
       id: 3,
       title: 'ランニング',
-      firstDate: new Date('2024-04-07T06:00:00'),
-      lastDate: new Date('2024-04-07T07:30:00'),
+      firstDate: new Date('2024-04-28T06:00:00'),
+      lastDate: new Date('2024-04-30T07:30:00'),
       allDay: false,
       location: '代々木公園',
       details: '朝練を行う',
@@ -203,7 +201,8 @@ export class MzkmnkCalendarComponent implements OnInit {
       };
       for (let j = 0; j < data.length; ++j) {
         if (
-          data[j].firstDate.getDate() === i + 1 &&
+          data[j].firstDate.getDate() <= i+1 &&
+          data[j].lastDate.getDate() >= i+1 &&
           data[j].firstDate.getMonth() === date.getMonth()
         ) {
           week[dayOfIndex].event++;
