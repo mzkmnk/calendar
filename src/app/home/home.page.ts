@@ -21,6 +21,24 @@ export class HomePage implements OnInit {
       location: '東京都',
       details: '浅草とかにいく予定',
     },
+    {
+      id: 2,
+      title: '勉強会',
+      firstDate: new Date('2024-04-29T00:00:00'),
+      lastDate: new Date('2024-04-29T23:59:00'),
+      allDay: true,
+      location: '学校',
+      details: '勉強する予定',
+    },
+    {
+      id: 3,
+      title: '勉強会',
+      firstDate: new Date('2024-04-25T00:00:00'),
+      lastDate: new Date('2024-04-25T23:59:00'),
+      allDay: true,
+      location: '学校',
+      details: '勉強する予定',
+    },
   ];
   ngOnInit(): void {}
 }

@@ -1,0 +1,26 @@
+<div>
+  <div class="header">
+    <ion-button style="margin-left: 20px" (click)="closeModal()">
+      <ion-icon
+        name="close-outline"
+        slot="icon-only"
+        style="padding: 5px"
+      ></ion-icon>
+    </ion-button>
+    <ion-button style="margin-right: 20px" id="open-edit-modal">
+      <ion-icon
+        name="create-outline"
+        slot="icon-only"
+        style="padding: 5px"
+      ></ion-icon>
+    </ion-button>
+  </div>
+  <div class="body">
+    <ion-label class="modal-event-title-style">{{ event.title }}</ion-label>
+    <ion-label class="modal-event-detail-style">{{ event.details }}</ion-label>
+    <ion-label class="modal-event-date-style">
+      {{ event.firstDate | date : "yyyy/MM/dd HH:mm" }} ~ <br />
+      {{ event.lastDate | date : "yyyy/MM/dd HH:mm" }}
+    </ion-label>
+  </div>
+</div>

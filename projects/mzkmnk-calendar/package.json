@@ -1,6 +1,6 @@
 {
   "name": "mzkmnk-calendar",
-  "version": "0.3.2",
+  "version": "0.3.5",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mzkmnk/calendar/issues"
@@ -29,5 +29,8 @@
     "@ionic/angular": "^7.7.3"
   },
   "author": "mzkmnk",
-  "description": "ionic calendar component"
+  "description": "ionic calendar component",
+  "dependencies": {
+    "@ionic/core": "^8.0.1"
+  }
 }

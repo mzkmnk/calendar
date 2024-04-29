@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { ModalController } from '@ionic/angular';
 import {
   IonContent,
   IonLabel,
@@ -33,6 +34,8 @@ import {
   getDay,
 } from 'date-fns';
 
+import { DetailScheduleComponent } from '../detail-schedule/detail-schedule.component';
+
 export interface CalendarEvent {
   id: number;
   title: string;
@@ -57,6 +60,7 @@ export interface Day {
   templateUrl: 'mzkmnk-calendar.component.html',
   styleUrls: ['mzkmnk-calendar.component.scss'],
   standalone: true,
+  providers: [ModalController],
   imports: [
     IonModal,
     IonCardSubtitle,
@@ -76,7 +80,6 @@ export interface Day {
   ],
 })
 export class MzkmnkCalendarComponent implements OnInit {
-  @ViewChild(IonModal) modal: IonModal;
   @Input() data: CalendarEvent[] = [
     {
       id: 1,
@@ -146,8 +149,7 @@ export class MzkmnkCalendarComponent implements OnInit {
    */
   selectedEvent: CalendarEvent[] = [];
 
-
-
+  private modalCtrl = inject(ModalController);
   constructor() {
     addIcons({
       chevronBackOutline,
@@ -280,7 +282,16 @@ export class MzkmnkCalendarComponent implements OnInit {
     return this.selectedDate === day;
   }
 
-  closeModal() {
-    this.modal.dismiss(null,'cancel');
+  //モダール
+  async openModal(event: CalendarEvent) {
+    const modal = await this.modalCtrl.create({
+      mode: 'ios',
+      component: DetailScheduleComponent,
+      componentProps: {
+        event: event,
+      },
+      initialBreakpoint: 0.9,
+    });
+    modal.present();
   }
 }

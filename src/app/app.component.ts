@@ -5,7 +5,7 @@ import {
   IonContent,
   IonLabel,
 } from '@ionic/angular/standalone';
-import { defineCustomElement as defineModal } from '@ionic/core/components/ion-modal.js';
+import { defineCustomElement as defineModal } from '@ionic/core/components/ion-modal';
 import { defineCustomElement as defineLoading } from '@ionic/core/components/ion-loading.js';
 
 @Component({

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import {
   IonContent,
   IonLabel,
@@ -77,6 +78,7 @@ export interface Day {
 })
 export class MzkmnkCalendarComponent implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
+
   @Input() data: CalendarEvent[] = [
     {
       id: 1,
@@ -146,8 +148,7 @@ export class MzkmnkCalendarComponent implements OnInit {
    */
   selectedEvent: CalendarEvent[] = [];
 
-
-
+  private router = inject(Router);
   constructor() {
     addIcons({
       chevronBackOutline,
@@ -281,6 +282,11 @@ export class MzkmnkCalendarComponent implements OnInit {
   }
 
   closeModal() {
-    this.modal.dismiss(null,'cancel');
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  openEditPage() {
+    this.closeModal();
+    this.router.navigate(['edit-schedule']);
   }
 }
