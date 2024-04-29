@@ -1,4 +1,4 @@
-<ion-content class="content">
+<ion-content>
   <div class="header">
     <ion-label
       >{{ monthName }}
@@ -55,15 +55,53 @@
   <ion-list lines="none">
     @for(event of selectedEvent;track event.id){
     <ion-card>
-      <ion-card-content class="event-card-style">
+      <ion-card-content class="event-card-style" id="open-modal">
         <ion-label class="title-style">{{ event.title }}</ion-label>
         @if(event.allDay){
         <ion-label>終日</ion-label>
         }@else {
-        <ion-label class="date-style"
-          >{{ event.firstDate | date : "MM/dd HH:mm" }} ~
+        <ion-label class="date-style">
+          {{ event.firstDate | date : "MM/dd HH:mm" }} ~
           {{ event.lastDate | date : "MM/dd HH:mm" }}</ion-label
         >
+        <ion-modal
+          trigger="open-modal"
+          [initialBreakpoint]="1.0"
+          [breakpoints]="[0, 1]"
+        >
+          <ng-template>
+            <div>
+              <div class="header">
+                <ion-button style="margin-left: 20px" (click)="closeModal()">
+                  <ion-icon
+                    name="close-outline"
+                    slot="icon-only"
+                    style="padding: 5px"
+                  ></ion-icon>
+                </ion-button>
+                <ion-button style="margin-right: 20px">
+                  <ion-icon
+                    name="create-outline"
+                    slot="icon-only"
+                    style="padding: 5px"
+                  ></ion-icon>
+                </ion-button>
+              </div>
+              <div class="body">
+                <ion-label class="modal-event-title-style">{{
+                  event.title
+                }}</ion-label>
+                <ion-label class="modal-event-detail-style">{{
+                  event?.details
+                }}</ion-label>
+                <ion-label class="modal-event-date-style">
+                  {{ event.firstDate | date : "yyyy/MM/dd HH:mm" }} ~ <br />
+                  {{ event.lastDate | date : "yyyy/MM/dd HH:mm" }}
+                </ion-label>
+              </div>
+            </div>
+          </ng-template>
+        </ion-modal>
         }
       </ion-card-content>
     </ion-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import {
   IonContent,
@@ -14,11 +14,15 @@ import {
   IonCardContent,
   IonCardTitle,
   IonCardSubtitle,
+  IonModal,
 } from '@ionic/angular/standalone';
 import {
   chevronBackOutline,
   chevronForwardOutline,
   ellipse,
+  closeOutline,
+  createOutline,
+  create,
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import {
@@ -29,21 +33,21 @@ import {
   getDay,
 } from 'date-fns';
 
-interface CalendarEvent {
+export interface CalendarEvent {
   id: number;
   title: string;
   firstDate: Date;
   lastDate: Date;
   allDay: boolean;
-  location: string;
-  details: string;
+  location?: string;
+  details?: string;
 }
 
-interface Week {
+export interface Week {
   [key: number]: Day;
 }
 
-interface Day {
+export interface Day {
   day: number;
   event: number;
 }
@@ -54,6 +58,7 @@ interface Day {
   styleUrls: ['mzkmnk-calendar.component.scss'],
   standalone: true,
   imports: [
+    IonModal,
     IonCardSubtitle,
     IonCardTitle,
     IonCardContent,
@@ -71,6 +76,7 @@ interface Day {
   ],
 })
 export class MzkmnkCalendarComponent implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
   @Input() data: CalendarEvent[] = [
     {
       id: 1,
@@ -140,11 +146,15 @@ export class MzkmnkCalendarComponent implements OnInit {
    */
   selectedEvent: CalendarEvent[] = [];
 
+
+
   constructor() {
     addIcons({
       chevronBackOutline,
       chevronForwardOutline,
       ellipse,
+      closeOutline,
+      createOutline,
     });
   }
 
@@ -201,8 +211,8 @@ export class MzkmnkCalendarComponent implements OnInit {
       };
       for (let j = 0; j < data.length; ++j) {
         if (
-          data[j].firstDate.getDate() <= i+1 &&
-          data[j].lastDate.getDate() >= i+1 &&
+          data[j].firstDate.getDate() <= i + 1 &&
+          data[j].lastDate.getDate() >= i + 1 &&
           data[j].firstDate.getMonth() === date.getMonth()
         ) {
           week[dayOfIndex].event++;
@@ -258,7 +268,6 @@ export class MzkmnkCalendarComponent implements OnInit {
     } else {
       this.selectedDate = day;
       this.normalizeEvent(this.data);
-      console.log(this.selectedEvent);
     }
   }
 
@@ -269,5 +278,9 @@ export class MzkmnkCalendarComponent implements OnInit {
    */
   isSelected(day: number): boolean {
     return this.selectedDate === day;
+  }
+
+  closeModal() {
+    this.modal.dismiss(null,'cancel');
   }
 }
