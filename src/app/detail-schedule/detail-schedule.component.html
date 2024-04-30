@@ -7,7 +7,12 @@
         style="padding: 5px"
       ></ion-icon>
     </ion-button>
-    <ion-button style="margin-right: 20px" id="open-edit-modal">
+    <ion-label>Detail</ion-label>
+    <ion-button
+      style="margin-right: 20px"
+      id="open-edit-modal"
+      (click)="openEditModal()"
+    >
       <ion-icon
         name="create-outline"
         slot="icon-only"

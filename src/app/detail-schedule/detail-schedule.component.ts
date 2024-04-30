@@ -8,6 +8,7 @@ import {
 } from '@ionic/angular/standalone';
 import { ModalController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { EditScheduleComponent } from '../edit-schedule/edit-schedule.component';
 
 @Component({
   selector: 'app-detail-schedule',
@@ -19,12 +20,23 @@ import { DatePipe } from '@angular/common';
 })
 export class DetailScheduleComponent implements OnInit {
   @Input() event: CalendarEvent;
+  @Input() submit: (event: CalendarEvent) => void;
   private modalCtrl = inject(ModalController);
   constructor() {}
 
   ngOnInit() {}
 
-  closeModal() {
-    return this.modalCtrl.dismiss(null, 'cancel');
+  async closeModal() {
+    return await this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  async openEditModal() {
+    await this.closeModal();
+    const modal = await this.modalCtrl.create({
+      component: EditScheduleComponent,
+      componentProps: { event: this.event, submit: this.submit },
+      initialBreakpoint: 0.9,
+    });
+    await modal.present();
   }
 }

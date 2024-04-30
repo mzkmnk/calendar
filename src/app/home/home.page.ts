@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
 
-import { MzkmnkCalendarComponent } from '../mzkmnk-calendar/mzkmnk-calendar.component';
+import {
+  CalendarEvent,
+  MzkmnkCalendarComponent,
+} from '../mzkmnk-calendar/mzkmnk-calendar.component';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -40,5 +43,10 @@ export class HomePage implements OnInit {
       details: '勉強する予定',
     },
   ];
+
+  async submit(event: CalendarEvent): Promise<void> {
+    console.log(event);
+  }
+
   ngOnInit(): void {}
 }

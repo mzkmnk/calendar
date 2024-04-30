@@ -23,7 +23,6 @@ import {
   ellipse,
   closeOutline,
   createOutline,
-  create,
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import {
@@ -80,6 +79,7 @@ export interface Day {
   ],
 })
 export class MzkmnkCalendarComponent implements OnInit {
+  @Input() submit: (event:CalendarEvent) => void;
   @Input() data: CalendarEvent[] = [
     {
       id: 1,
@@ -289,6 +289,7 @@ export class MzkmnkCalendarComponent implements OnInit {
       component: DetailScheduleComponent,
       componentProps: {
         event: event,
+        submit: this.submit,
       },
       initialBreakpoint: 0.9,
     });

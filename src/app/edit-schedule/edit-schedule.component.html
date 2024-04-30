@@ -1,3 +1,71 @@
-<p>
-  edit-schedule works!
-</p>
+<ion-content>
+  <div class="header">
+    <ion-button style="margin-left: 20px" (click)="back()">
+      <ion-icon
+        name="return-down-back-outline"
+        slot="icon-only"
+        style="padding: 5px"
+      ></ion-icon>
+    </ion-button>
+    <ion-label>EditPage</ion-label>
+    <ion-button
+      style="margin-right: 20px"
+      id="open-edit-modal"
+      (click)="submitSchedule()"
+    >
+      <ion-icon
+        name="checkmark-outline"
+        slot="icon-only"
+        style="padding: 5px"
+      ></ion-icon>
+    </ion-button>
+  </div>
+  <div class="body">
+    <ion-list lines="none">
+      <!-- タイトル(title) -->
+      <div class="item-style title-style">
+        <ion-label>Title</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="editEvent.title"
+          [value]="editEvent.title"
+          mode="md"
+          fill="outline"
+          shape="round"
+          name="title"
+        ></ion-input>
+      </div>
+      <!-- 詳細(details) -->
+      <div class="item-style details-style">
+        <ion-label>Details</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="editEvent.details"
+          value="{{ editEvent.details }}"
+          mode="md"
+          fill="outline"
+          shape="round"
+          name="details"
+        ></ion-input>
+      </div>
+      <!-- 日付(firstDate,lastDate) -->
+      <!-- 開始・終了時間、終日かどうか(firstDate,lastDate,allDay) -->
+      <div class="item-style date-style">
+        <ion-label>Date</ion-label>
+      </div>
+      <!-- 場所(location) -->
+      <div class="item-style location-style">
+        <ion-label>Location</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="editEvent.location"
+          value="{{ editEvent.location }}"
+          mode="md"
+          fill="outline"
+          shape="round"
+          name="location"
+        ></ion-input>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>
